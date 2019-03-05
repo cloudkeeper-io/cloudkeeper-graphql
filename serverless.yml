@@ -1,0 +1,48 @@
+service: cloudkeeper-graphql
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  versionFunctions: false
+  memorySize: 256
+  region: eu-central-1
+  environment:
+    stage: ${self:custom.stage}
+  iamRoleStatements:
+    ${file(roleStatements.yml)}
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  dev:
+    appSecret: test-secret
+
+functions:
+  auth:
+    handler: src/handler.auth
+    environment:
+      appSecret: ${self:custom.${self:custom.stage}.appSecret}
+
+  graphql:
+    handler: src/handler.handler
+    environment:
+      bucket: ${self:custom.stage}-cloudkeeper-tenant-data
+    events:
+    - http:
+        path: ''
+        method: post
+        authorizer: auth
+        cors:
+          origins:
+            - '*'
+          headers:
+            - Content-Type
+            - X-Amz-Date
+            - Authorization
+            - X-Api-Key
+            - X-Amz-Security-Token
+            - X-Amz-User-Agent
+          allowCredentials: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline

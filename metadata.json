@@ -1,0 +1,22 @@
+{
+  "Description": "Lambda to query reportlake",
+  "Handler": "src/handler.handler",
+  "Timeout": 30,
+  "Memory": 1536,
+  "Runtime": "nodejs8.10",
+  "Role": "@role:lambda_basic_execution@",
+  "Payload": "payload.zip",
+  "ActiveTracing": "DISABLE",
+  "Environment": {
+    "loglevel": "@env: LOGLEVEL@",
+    "account" : "@account@",
+    "stage": "@env: STAGE@",
+    "reportLakeBucket": "reportlake-@account@.ebuilder.io",
+    "region": "@region@",
+    "debug": "false"
+  },
+  "CWLogFilter": {
+    "Destination": "@kinesis:outCWlogs@",
+    "Role": "@role:CWLtoKinesisRole@"
+  }
+}
