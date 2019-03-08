@@ -6,17 +6,11 @@ type TotalsDataPoint {
 }
 `
 
-export const TotalsSummary = `
-type TotalsSummary {
-  invocations: Int
-  errors: Int
-}
-`
-
 export const Totals = `
 type Totals {
-  totals: TotalsSummary
-  dataPoints: [TotalsDataPoint]
+  invocations: Int
+  errors: Int
+    dataPoints: [TotalsDataPoint]
 }
 `
 
@@ -29,4 +23,4 @@ type DashboardDataForPeriod {
 export const DashboardData = `
 type DashboardData {
   last24Hours: DashboardDataForPeriod,
-}`;
+}`

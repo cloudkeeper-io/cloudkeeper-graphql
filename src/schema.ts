@@ -4,8 +4,7 @@ import {
   Query,
   Totals,
   TotalsDataPoint,
-  TotalsSummary,
-} from './schemas';
+} from './schemas'
 
 export default [
   'scalar JSON',
@@ -13,6 +12,5 @@ export default [
   DashboardDataForPeriod,
   TotalsDataPoint,
   Totals,
-  TotalsSummary,
   Query,
-];
+]

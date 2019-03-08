@@ -1,1 +1,1 @@
-export * from './graph-data.resolver';
+export * from './graph-data.resolver'

@@ -11,16 +11,31 @@ provider:
   iamRoleStatements:
     ${file(roleStatements.yml)}
 
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-domain-manager
+
 custom:
   stage: ${opt:stage, self:provider.stage}
+  appSecret: ${ssm:${self:custom.stage}-app-secret}
   dev:
-    appSecret: test-secret
+    domain: dev-api.cloudkeeper.io
+  prod:
+    domain: api.cloudkeeper.io
+  customDomain:
+    domainName: ${self:custom.${self:custom.stage}.domain}
+    stage: ${self:custom.stage}
+    basePath: graphql
+    certificateName: '*.cloudkeeper.io'
+    createRoute53Record: true
+    endpointType: 'regional'
 
 functions:
   auth:
     handler: src/handler.auth
     environment:
-      appSecret: ${self:custom.${self:custom.stage}.appSecret}
+      appSecret: ${self:custom.appSecret}
 
   graphql:
     handler: src/handler.handler
@@ -42,7 +57,3 @@ functions:
             - X-Amz-Security-Token
             - X-Amz-User-Agent
           allowCredentials: true
-
-plugins:
-  - serverless-webpack
-  - serverless-offline
