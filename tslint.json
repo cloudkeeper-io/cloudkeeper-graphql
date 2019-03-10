@@ -18,6 +18,7 @@
       "LF"
     ],
     "semicolon": [true, "never"],
+    "ordered-imports": false,
     "align": false,
     "interface-name": false,
     "import-name": false,
