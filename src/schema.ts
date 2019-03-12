@@ -7,9 +7,11 @@ import {
   MostInvokedLambdaDataPoint,
   MostErrorsLambdaData,
   MostErrorsLambdaDataPoint,
+  Tenant,
   Query,
   Totals,
   TotalsDataPoint,
+  Mutation,
 } from './schemas'
 
 export default [
@@ -24,5 +26,7 @@ export default [
   DashboardDataForPeriod,
   TotalsDataPoint,
   Totals,
+  Tenant,
   Query,
+  Mutation,
 ]

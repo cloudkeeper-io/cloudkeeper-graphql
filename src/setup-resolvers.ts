@@ -1,11 +1,16 @@
-import * as GraphQLJSON from 'graphql-type-json';
+import * as GraphQLJSON from 'graphql-type-json'
 import {
   getDashboardData,
-} from './resolvers';
+  getTenants,
+} from './resolvers'
 
 export default {
   JSON: GraphQLJSON,
   Query: {
     dashboardData: getDashboardData,
+    tenants: getTenants,
   },
-};
+  Mutation: {
+    setupTenant: getTenants,
+  },
+}

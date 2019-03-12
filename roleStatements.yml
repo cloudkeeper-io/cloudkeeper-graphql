@@ -13,3 +13,8 @@
   Action:
     - "execute-api:Invoke"
   Resource: "arn:aws:execute-api:*:*:*"
+
+- Effect: Allow
+  Action:
+    - "lambda:InvokeFunction"
+  Resource: "*"
