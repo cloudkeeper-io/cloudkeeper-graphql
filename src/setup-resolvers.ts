@@ -2,6 +2,7 @@ import * as GraphQLJSON from 'graphql-type-json'
 import {
   getDashboardData,
   getTenants,
+  createTenant,
 } from './resolvers'
 
 export default {
@@ -11,6 +12,6 @@ export default {
     tenants: getTenants,
   },
   Mutation: {
-    setupTenant: getTenants,
+    createTenant,
   },
 }
