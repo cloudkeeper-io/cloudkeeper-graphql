@@ -1,6 +1,6 @@
 export const Tenant = `
 type Tenant {
-  tenantId: String
+  id: String
   name: String
   isSetupCompleted: Boolean
 }

@@ -17,6 +17,8 @@ export const getTenants = async (obj: any, args: any, context: any) => {
 
   const user = JSON.parse(getUserResult.Payload!.toString())
 
+  console.log('user', user)
+
   if (user.tenantIds.length === 0) {
     return []
   }
