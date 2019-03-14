@@ -1,7 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as Lambda from 'aws-sdk/clients/lambda'
+// @ts-ignore
+import * as xRay from 'aws-xray-sdk-core'
 
-const lambda = new Lambda({ apiVersion: '2015-03-31' })
+const lambda = xRay.captureAWSClient(new Lambda({ apiVersion: '2015-03-31' }))
 
 export const getTenants = async (obj: any, args: any, context: any) => {
   const id = context.event.requestContext.authorizer.id
@@ -17,7 +19,7 @@ export const getTenants = async (obj: any, args: any, context: any) => {
 
   const user = JSON.parse(getUserResult.Payload!.toString())
 
-  console.log('user', user)
+  console.log('useyr', user)
 
   if (user.tenantIds.length === 0) {
     return []

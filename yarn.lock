@@ -1185,7 +1185,7 @@ aws-sdk@^2.177.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
-aws-sdk@^2.304.0, aws-sdk@^2.373.0, aws-sdk@^2.405.0:
+aws-sdk@^2.304.0, aws-sdk@^2.373.0:
   version "2.414.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.414.0.tgz#38f43a536fc47ecd407049565737a0fb009d4cc9"
   integrity sha512-ZJvZei479gJdp0N2MKb1I0COcowNIN5L5cllooMV0RPztrianR72SyE1gquPeT7TA37l/fVuSmYat2dh4C2GTg==
@@ -1218,32 +1218,6 @@ aws-xray-sdk-core@^2.2.0:
     pkginfo "^0.4.0"
     semver "^5.3.0"
     winston "^2.4.4"
-
-aws-xray-sdk-express@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-express/-/aws-xray-sdk-express-2.2.0.tgz#561ddd72c2d42ee75d2f972b47841b65828bfe74"
-  integrity sha512-tjzehB0Vf1+jx5Q9Pm2AFm/C3tCN3byaWmOKr//AGejupisTOVj9OrMoJraBc79UmLKVrO29p+6fL4eRKBcNjw==
-
-aws-xray-sdk-mysql@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-mysql/-/aws-xray-sdk-mysql-2.2.0.tgz#2714eae792f9d0ae9cb25264e0859a608eec1140"
-  integrity sha512-Htgkt1lEdXplljoM3HqJ+SUwpE27Uf/Sx7/ZUjSKbv12BAhScxtJbjf9+dqS0KCSBjtBB5Af6lNPE78gtUfOaQ==
-
-aws-xray-sdk-postgres@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk-postgres/-/aws-xray-sdk-postgres-2.2.0.tgz#81e8e7748436e8adb0498a93860024531f1ce6b3"
-  integrity sha512-MMOnbGcCeb5LKhYULf0EdNtdOnbu0phIvAikUY2b0WSQA2WziZUD0Ez9r98tQ2OFXqQEzOUYiO48EUz629gNJA==
-
-aws-xray-sdk@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/aws-xray-sdk/-/aws-xray-sdk-2.2.0.tgz#c030956df03ef40fa0cef03642324d0e49403110"
-  integrity sha512-SrRKOmv86kNe0wEn1z4hHXisAMnUXv6d8e8xWVPBwqemr0uNw5Z5jkZZmxRvhrmI/ViUe23YjToBxeo1XnjjZw==
-  dependencies:
-    aws-xray-sdk-core "^2.2.0"
-    aws-xray-sdk-express "^2.2.0"
-    aws-xray-sdk-mysql "^2.2.0"
-    aws-xray-sdk-postgres "^2.2.0"
-    pkginfo "^0.4.0"
 
 aws4@^1.8.0:
   version "1.8.0"
@@ -6349,6 +6323,11 @@ serverless-offline@^4.4.2:
     jsonwebtoken "^8.3.0"
     trim-newlines "^2.0.0"
     velocityjs "^1.1.2"
+
+serverless-plugin-tracing@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/serverless-plugin-tracing/-/serverless-plugin-tracing-2.0.0.tgz#df6b8b3166ac9bb70a37c7fc875014b2369158f6"
+  integrity sha1-32uLMWasm7cKN8f8h1AUsjaRWPY=
 
 serverless-webpack@^5.1.5:
   version "5.2.0"

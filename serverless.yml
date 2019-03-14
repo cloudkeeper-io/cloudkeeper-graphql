@@ -4,8 +4,9 @@ provider:
   name: aws
   runtime: nodejs8.10
   versionFunctions: false
-  memorySize: 256
+  memorySize: 512
   region: eu-central-1
+  tracing: true
   environment:
     stage: ${self:custom.stage}
   iamRoleStatements:
@@ -15,6 +16,7 @@ plugins:
   - serverless-webpack
   - serverless-offline
   - serverless-domain-manager
+  - serverless-plugin-tracing
 
 custom:
   stage: ${opt:stage, self:provider.stage}

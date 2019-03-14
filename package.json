@@ -14,8 +14,7 @@
   },
   "dependencies": {
     "apollo-server-lambda": "^2.4.2",
-    "aws-sdk": "^2.405.0",
-    "aws-xray-sdk": "^2.2.0",
+    "aws-xray-sdk-core": "^2.2.0",
     "bunyan": "^1.8.10",
     "d3": "^5.9.1",
     "graphql": "^14.1.1",
@@ -41,6 +40,7 @@
     "serverless": "^1.37.1",
     "serverless-domain-manager": "^3.1.0",
     "serverless-offline": "^4.4.2",
+    "serverless-plugin-tracing": "^2.0.0",
     "serverless-webpack": "^5.1.5",
     "ts-jest": "^24.0.0",
     "ts-loader": "^5.3.3",
