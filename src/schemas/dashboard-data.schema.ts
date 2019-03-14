@@ -71,5 +71,6 @@ type DashboardDataForPeriod {
 export const DashboardData = `
 type DashboardData {
   last24Hours: DashboardDataForPeriod,
+  last30Days: DashboardDataForPeriod,
 }
 `
