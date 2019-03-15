@@ -58,6 +58,19 @@ type MostErrorsLambdaData {
   dataPoints: [MostErrorsLambdaDataPoint]
 }
 `
+export const MostExpensiveLambdaDataPoint = `
+type MostExpensiveLambdaDataPoint {
+  cost: Float
+  dateTime: String
+}
+`
+export const MostExpensiveLambdaData = `
+type MostExpensiveLambdaData {
+  lambdaName: String
+  cost: Float
+  dataPoints: [MostExpensiveLambdaDataPoint]
+}
+`
 
 export const DashboardDataForPeriod = `
 type DashboardDataForPeriod {
@@ -65,6 +78,7 @@ type DashboardDataForPeriod {
   slowestLambdas: [SlowLambdaData]
   mostInvokedLambdas: [MostInvokedLambdaData]
   mostErrorsLambdas: [MostErrorsLambdaData]
+  mostExpensiveLambdas: [MostExpensiveLambdaData]
 }
 `
 
