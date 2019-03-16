@@ -3,6 +3,7 @@ type TotalsDataPoint {
   dateTime: String
   invocations: Int
   errors: Int
+  cost: Float
 }
 `
 
@@ -10,6 +11,7 @@ export const Totals = `
 type Totals {
   invocations: Int
   errors: Int
+  cost: Float
   dataPoints: [TotalsDataPoint]
 }
 `
