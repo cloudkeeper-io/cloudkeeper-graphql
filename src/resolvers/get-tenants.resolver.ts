@@ -9,26 +9,11 @@ export const getTenants = async (obj: any, args: any, context: any) => {
   const id = context.event.requestContext.authorizer.id
   const provider = context.event.requestContext.authorizer.provider
 
-  const getUserResult = await lambda.invoke({
-    FunctionName: `auth-service-${process.env.stage}-get-user`,
-    Payload: JSON.stringify({
-      id,
-      provider,
-    }),
-  }).promise()
-
-  const user = JSON.parse(getUserResult.Payload!.toString())
-
-  console.log('useyr', user)
-
-  if (user.tenantIds.length === 0) {
-    return []
-  }
-
   const getTenantsResult = await lambda.invoke({
     FunctionName: `cloudkeeper-metrics-service-${process.env.stage}-list-tenants`,
     Payload: JSON.stringify({
-      tenantIds: user.tenantIds,
+      provider,
+      userId: id,
     }),
   }).promise()
 
