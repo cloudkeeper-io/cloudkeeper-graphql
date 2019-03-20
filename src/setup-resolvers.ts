@@ -3,6 +3,7 @@ import {
   getDashboardData,
   getTenants,
   createTenant,
+  deleteTenant,
 } from './resolvers'
 
 export default {
@@ -13,5 +14,6 @@ export default {
   },
   Mutation: {
     createTenant,
+    deleteTenant,
   },
 }
