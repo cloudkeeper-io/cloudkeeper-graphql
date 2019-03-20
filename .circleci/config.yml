@@ -123,7 +123,6 @@ workflows:
     jobs:
       - ensure-deps
       - checks:
-          context: ayankovsky-context
           requires:
             - ensure-deps
       - dev-deploy:
@@ -152,7 +151,6 @@ workflows:
             tags:
               only: /^release.*/
       - checks:
-          context: ayankovsky-context
           requires:
             - ensure-deps
           filters:
