@@ -1,26 +1,20 @@
-import { ApolloServer } from 'apollo-server-lambda';
-import { Handler } from 'aws-lambda';
-import * as Logger from 'bunyan';
-import { authenticate } from './auth';
+import { ApolloServer } from 'apollo-server-lambda'
+import { Handler } from 'aws-lambda'
+import * as Logger from 'bunyan'
+import { authenticate } from './auth'
 
-import schema from './schema';
-import resolvers from './setup-resolvers';
-
-export interface IContext {
-  log: Logger;
-  systemId: string;
-  userId: string;
-}
+import schema from './schema'
+import resolvers from './setup-resolvers'
 
 const log = Logger.createLogger({
   level: process.env.loglevel || 'DEBUG',
   name: 'report-metadata-api',
-} as Logger.LoggerOptions);
+} as Logger.LoggerOptions)
 
 export const auth = (event: any) => {
   console.log(event)
-  return authenticate(event);
-};
+  return authenticate(event)
+}
 
 const server = new ApolloServer({
   resolvers,
@@ -29,10 +23,10 @@ const server = new ApolloServer({
     // add logger for child
     const config: any = {
       log: log.child({ schema: 'schema' }),
-    };
+    }
 
-    return { ...config, event, context };
+    return { ...config, event, context }
   },
-});
+})
 
-export const handler: Handler = server.createHandler({ cors: { origin: '*', credentials: true } });
+export const handler: Handler = server.createHandler({ cors: { origin: '*', credentials: true } })

@@ -1,4 +1,5 @@
-export * from './dashboard-data.schema'
+export * from './lambdas-data.schema'
+export * from './dynamo-data.schema'
 export * from './query.schema'
 export * from './mutation.schema'
 export * from './tenant.schema'

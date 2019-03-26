@@ -1,6 +1,7 @@
 import * as GraphQLJSON from 'graphql-type-json'
 import {
-  getDashboardData,
+  getLambdasData,
+  getDynamoData,
   getTenants,
   createTenant,
   deleteTenant,
@@ -9,7 +10,8 @@ import {
 export default {
   JSON: GraphQLJSON,
   Query: {
-    dashboardData: getDashboardData,
+    lambdasData: getLambdasData,
+    dynamoData: getDynamoData,
     tenants: getTenants,
   },
   Mutation: {

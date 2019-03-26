@@ -27,6 +27,10 @@ type SlowLambdaDataPoint {
 export const SlowLambdaData = `
 type SlowLambdaData {
   lambdaName: String
+  size: Int
+  runtime: String
+  timeout: Int
+  codeSize: Int
   averageDuration: Float
   dataPoints: [SlowLambdaDataPoint]
 }
@@ -42,6 +46,10 @@ type MostInvokedLambdaDataPoint {
 export const MostInvokedLambdaData = `
 type MostInvokedLambdaData {
   lambdaName: String
+  size: Int
+  runtime: String
+  timeout: Int
+  codeSize: Int
   invocations: Int
   dataPoints: [MostInvokedLambdaDataPoint]
 }
@@ -56,6 +64,10 @@ type MostErrorsLambdaDataPoint {
 export const MostErrorsLambdaData = `
 type MostErrorsLambdaData {
   lambdaName: String
+  size: Int
+  runtime: String
+  timeout: Int
+  codeSize: Int
   errors: Int
   dataPoints: [MostErrorsLambdaDataPoint]
 }
@@ -69,13 +81,17 @@ type MostExpensiveLambdaDataPoint {
 export const MostExpensiveLambdaData = `
 type MostExpensiveLambdaData {
   lambdaName: String
+  size: Int
+  runtime: String
+  timeout: Int
+  codeSize: Int
   cost: Float
   dataPoints: [MostExpensiveLambdaDataPoint]
 }
 `
 
 export const DashboardDataForPeriod = `
-type DashboardDataForPeriod {
+type DashboardLambdaDataForPeriod {
   totals: Totals
   slowestLambdas: [SlowLambdaData]
   mostInvokedLambdas: [MostInvokedLambdaData]
@@ -84,9 +100,9 @@ type DashboardDataForPeriod {
 }
 `
 
-export const DashboardData = `
-type DashboardData {
-  last24Hours: DashboardDataForPeriod,
-  last30Days: DashboardDataForPeriod,
+export const DashboardLambdasData = `
+type DashboardLambdasData {
+  last24Hours: DashboardLambdaDataForPeriod,
+  last30Days: DashboardLambdaDataForPeriod,
 }
 `

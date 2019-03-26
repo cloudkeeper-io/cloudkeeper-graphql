@@ -1,5 +1,6 @@
 export const Query = `
 type Query {
-  dashboardData(tenantId: String): DashboardData
+  lambdasData(tenantId: String): DashboardLambdasData
+  dynamoData(tenantId: String): DashboardDynamoData
   tenants: [Tenant]
 }`
