@@ -32,6 +32,7 @@ type SlowLambdaData {
   timeout: Int
   codeSize: Int
   averageDuration: Float
+  maxDuration: Float
   dataPoints: [SlowLambdaDataPoint]
 }
 `
@@ -50,6 +51,7 @@ type MostInvokedLambdaData {
   runtime: String
   timeout: Int
   codeSize: Int
+  invocationsPerSecond: Float
   invocations: Int
   dataPoints: [MostInvokedLambdaDataPoint]
 }
@@ -66,6 +68,7 @@ type MostErrorsLambdaData {
   lambdaName: String
   size: Int
   runtime: String
+  errorRate: Float
   timeout: Int
   codeSize: Int
   errors: Int
