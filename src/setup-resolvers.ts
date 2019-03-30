@@ -5,6 +5,7 @@ import {
   getTenants,
   createTenant,
   deleteTenant,
+  getAwsRegions,
 } from './resolvers'
 
 export default {
@@ -13,6 +14,7 @@ export default {
     lambdasData: getLambdasData,
     dynamoData: getDynamoData,
     tenants: getTenants,
+    awsRegions: getAwsRegions,
   },
   Mutation: {
     createTenant,

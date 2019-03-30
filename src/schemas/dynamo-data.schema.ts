@@ -91,6 +91,7 @@ type DashboardDynamoDataForPeriod {
 
 export const DashboardDynamoData = `
 type DashboardDynamoData {
+  processing: Boolean
   last24Hours: DashboardDynamoDataForPeriod,
   last30Days: DashboardDynamoDataForPeriod,
 }

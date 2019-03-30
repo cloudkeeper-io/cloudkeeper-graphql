@@ -32,10 +32,14 @@ export const s3resolver = async (args: any, context: any, prefix: string) => {
   try {
     const data = await s3.getObject(params).promise()
 
-    return JSON.parse(data.Body!.toString())
+    return {
+      processing: false,
+      ...JSON.parse(data.Body!.toString()),
+    }
   } catch (err) {
     if (err.code === 'NoSuchKey') {
       return {
+        processing: true,
       }
     }
   }

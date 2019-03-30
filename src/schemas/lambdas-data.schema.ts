@@ -105,6 +105,7 @@ type DashboardLambdaDataForPeriod {
 
 export const DashboardLambdasData = `
 type DashboardLambdasData {
+  processing: Boolean
   last24Hours: DashboardLambdaDataForPeriod,
   last30Days: DashboardLambdaDataForPeriod,
 }
