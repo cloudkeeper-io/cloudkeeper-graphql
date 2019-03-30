@@ -20,12 +20,12 @@
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "noEmit": true
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",
     "build",
+    "dist",
     "webpack"
   ],
   "types": [
