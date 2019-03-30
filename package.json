@@ -10,7 +10,7 @@
     "test:func": "jest func",
     "lint": "tslint src/**/*.ts",
     "lint:fix": "tslint src/**/*.ts --fix",
-    "typecheck": "tsc --project tsconfig.json --noEmit --skipLibCheck"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "apollo-server-lambda": "^2.4.2",
@@ -45,7 +45,7 @@
     "ts-loader": "^5.3.3",
     "tslint": "^5.12.1",
     "tslint-config-airbnb": "^5.11.1",
-    "typescript": "^3.3.3",
+    "typescript": "^3.4.1",
     "webpack": "^4.29.5"
   },
   "jest": {
