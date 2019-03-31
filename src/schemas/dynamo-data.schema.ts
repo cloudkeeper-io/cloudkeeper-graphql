@@ -8,6 +8,7 @@ type MostReadTableDataPoint {
 export const MostReadTableData = `
 type MostReadTableData {
   name: String
+  averageConsumedRead: Float
   billingMode: String
   sizeBytes: Int
   items: Int
@@ -27,6 +28,7 @@ type MostWritesTableDataPoint {
 export const MostWritesTableData = `
 type MostWritesTableData {
   name: String
+  averageConsumedWrite: Float
   billingMode: String
   sizeBytes: Int
   items: Int
