@@ -17,5 +17,13 @@ export const createTenant = async (obj: any, args: any, context: any) => {
 
   const tenant = JSON.parse(createTenantResult.Payload!.toString())
 
+  if (!tenant || tenant.status === 'FAILED') {
+    if (tenant.error === 'KEYS_ISSUE') {
+      throw new Error('KEYS_ISSUE')
+    }
+
+    throw new Error('Failed setup')
+  }
+
   return tenant
 }
