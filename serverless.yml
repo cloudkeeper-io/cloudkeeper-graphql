@@ -23,8 +23,13 @@ custom:
   appSecret: ${ssm:${self:custom.stage}-app-secret}
   dev:
     domain: dev-api.cloudkeeper.io
+    corsOrigins:
+      - 'http://localhost:3000'
+      - 'https://dev.cloudkeeper.io'
   prod:
     domain: api.cloudkeeper.io
+    corsOrigins:
+      - 'https://app.cloudkeeper.io'
   customDomain:
     domainName: ${self:custom.${self:custom.stage}.domain}
     stage: ${self:custom.stage}
@@ -49,8 +54,7 @@ functions:
         method: post
         authorizer: auth
         cors:
-          origins:
-            - '*'
+          origins: ${self:custom.${self:custom.stage}.corsOrigins}
           headers:
             - Content-Type
             - X-Amz-Date
