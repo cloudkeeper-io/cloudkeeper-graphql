@@ -19,6 +19,8 @@ export const auth = (event: any) => {
 const server = new ApolloServer({
   resolvers,
   typeDefs: schema as any,
+  introspection: true,
+  playground: true,
   context: ({ event, context }: any) => {
     // add logger for child
     const config: any = {

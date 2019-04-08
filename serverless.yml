@@ -49,17 +49,23 @@ functions:
     environment:
       bucket: ${self:custom.stage}-cloudkeeper-tenant-data
     events:
-    - http:
-        path: ''
-        method: post
-        authorizer: auth
-        cors:
-          origins: ${self:custom.${self:custom.stage}.corsOrigins}
-          headers:
-            - Content-Type
-            - X-Amz-Date
-            - Authorization
-            - X-Api-Key
-            - X-Amz-Security-Token
-            - X-Amz-User-Agent
-          allowCredentials: true
+      - http:
+          path: playground
+          method: '*'
+          cors:
+            origins:
+              - '*'
+      - http:
+          path: ''
+          method: post
+          authorizer: auth
+          cors:
+            origins: ${self:custom.${self:custom.stage}.corsOrigins}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
