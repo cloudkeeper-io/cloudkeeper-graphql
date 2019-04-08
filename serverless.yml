@@ -51,7 +51,7 @@ functions:
     events:
       - http:
           path: playground
-          method: '*'
+          method: any
           cors:
             origins:
               - '*'
