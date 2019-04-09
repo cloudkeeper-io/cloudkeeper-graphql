@@ -7,3 +7,10 @@ type Tenant {
   isSetupCompleted: Boolean
 }
 `
+
+export const IntegrationData = `
+type IntegrationData {
+  status: String
+  functions: Int
+}
+`

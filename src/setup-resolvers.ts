@@ -6,6 +6,7 @@ import {
   createTenant,
   deleteTenant,
   getAwsRegions,
+  setupTenant,
 } from './resolvers'
 
 export default {
@@ -19,5 +20,6 @@ export default {
   Mutation: {
     createTenant,
     deleteTenant,
+    setupTenant,
   },
 }

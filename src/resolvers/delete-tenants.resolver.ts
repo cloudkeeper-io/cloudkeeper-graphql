@@ -2,6 +2,7 @@
 import * as Lambda from 'aws-sdk/clients/lambda'
 // @ts-ignore
 import * as xRay from 'aws-xray-sdk-core'
+import { checkError } from '../utils'
 
 const lambda = xRay.captureAWSClient(new Lambda({ apiVersion: '2015-03-31' }))
 
@@ -19,6 +20,8 @@ export const deleteTenant = async (obj: any, args: any, context: any) => {
   }).promise()
 
   const tenant = JSON.parse(deleteTenantResult.Payload!.toString())
+
+  checkError(tenant)
 
   return tenant
 }

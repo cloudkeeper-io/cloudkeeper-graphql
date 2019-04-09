@@ -19,6 +19,7 @@ import {
   MostErrorsLambdaDataPoint,
   MostExpensiveLambdaData,
   MostExpensiveLambdaDataPoint,
+  IntegrationData,
   Tenant,
   Query,
   Totals,
@@ -51,6 +52,7 @@ export default [
   TotalsDataPoint,
   Totals,
   Tenant,
+  IntegrationData,
   Query,
   Mutation,
 ]
