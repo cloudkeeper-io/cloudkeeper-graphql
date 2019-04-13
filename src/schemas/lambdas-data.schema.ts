@@ -27,6 +27,7 @@ type SlowLambdaDataPoint {
 export const SlowLambdaData = `
 type SlowLambdaData {
   lambdaName: String
+  region: String
   size: Int
   runtime: String
   timeout: Int
@@ -47,6 +48,7 @@ type MostInvokedLambdaDataPoint {
 export const MostInvokedLambdaData = `
 type MostInvokedLambdaData {
   lambdaName: String
+  region: String
   size: Int
   runtime: String
   timeout: Int
@@ -66,6 +68,7 @@ type MostErrorsLambdaDataPoint {
 export const MostErrorsLambdaData = `
 type MostErrorsLambdaData {
   lambdaName: String
+  region: String
   size: Int
   runtime: String
   errorRate: Float
@@ -84,6 +87,7 @@ type MostExpensiveLambdaDataPoint {
 export const MostExpensiveLambdaData = `
 type MostExpensiveLambdaData {
   lambdaName: String
+  region: String
   size: Int
   runtime: String
   timeout: Int

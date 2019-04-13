@@ -8,6 +8,7 @@ type MostReadTableDataPoint {
 export const MostReadTableData = `
 type MostReadTableData {
   name: String
+  region: String
   averageConsumedRead: Float
   billingMode: String
   sizeBytes: Int
@@ -28,6 +29,7 @@ type MostWritesTableDataPoint {
 export const MostWritesTableData = `
 type MostWritesTableData {
   name: String
+  region: String
   averageConsumedWrite: Float
   billingMode: String
   sizeBytes: Int
@@ -49,6 +51,7 @@ type MostThrottledTableDataPoint {
 export const MostThrottledTableData = `
 type MostThrottledTableData {
   name: String
+  region: String
   billingMode: String
   sizeBytes: Int
   items: Int
@@ -71,6 +74,7 @@ type MostExpensiveTableDataPoint {
 export const MostExpensiveTableData = `
 type MostExpensiveTableData {
   name: String
+  region: String
   billingMode: String
   sizeBytes: Int
   items: Int
