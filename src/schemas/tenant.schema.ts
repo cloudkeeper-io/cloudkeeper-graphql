@@ -1,9 +1,9 @@
 export const Tenant = `
 type Tenant {
-  id: String
-  name: String
-  createdAt: String
-  isSetupCompleted: Boolean
+  id: String!
+  name: String!
+  createdAt: String!
+  isSetupCompleted: Boolean!
 }
 `
 
