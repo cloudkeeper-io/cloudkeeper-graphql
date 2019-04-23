@@ -1,14 +1,14 @@
 import * as firebase from 'firebase-admin'
 
-const serviceAccount = process.env.serviceAccount!
+const serviceAccount = JSON.parse(process.env.firebaseCertificate!)
 
 // every configuration is set in an env variable for security reasons https://firebase.google.com/docs/admin/setup
 const config = {
   credential: firebase.credential.cert(serviceAccount),
-  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  databaseURL: process.env.firebaseDbUrl,
 }
 
-const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app()
+const app = firebase.initializeApp(config)
 
 /**
  * Function used to build the authorization response in the Lambda way
@@ -68,4 +68,9 @@ export const authenticate = async (event: any, context: any) => {
     console.log('catch error. Invalid token', err)
     throw new Error('There are some issues with your auth token.')
   }
+}
+
+export const auth = (event: any, context: any) => {
+  console.log(event)
+  return authenticate(event, context)
 }

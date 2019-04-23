@@ -1,7 +1,6 @@
 import { ApolloServer } from 'apollo-server-lambda'
 import { Handler } from 'aws-lambda'
 import * as Logger from 'bunyan'
-import { authenticate } from './auth'
 
 import schema from './schema'
 import resolvers from './setup-resolvers'
@@ -10,11 +9,6 @@ const log = Logger.createLogger({
   level: process.env.loglevel || 'DEBUG',
   name: 'report-metadata-api',
 } as Logger.LoggerOptions)
-
-export const auth = (event: any, context: any) => {
-  console.log(event)
-  return authenticate(event, context)
-}
 
 const server = new ApolloServer({
   resolvers,

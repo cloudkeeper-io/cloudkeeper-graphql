@@ -20,13 +20,15 @@ plugins:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  firebaseServiceAccount: ${ssm:${self:custom.stage}-firebase-service-account}
+  firebaseCertificate: ${ssm:${self:custom.stage}-firebase-service-account}
   dev:
+    firebaseDbUrl: https://dev-cloudkeeper.firebaseio.com
     domain: dev-api.cloudkeeper.io
     corsOrigins:
       - 'http://localhost:3000'
       - 'https://dev.cloudkeeper.io'
   prod:
+    firebaseDbUrl: https://prod-cloudkeeper.firebaseio.com
     domain: api.cloudkeeper.io
     corsOrigins:
       - 'https://app.cloudkeeper.io'
@@ -40,9 +42,10 @@ custom:
 
 functions:
   auth:
-    handler: src/handler.auth
+    handler: src/auth.auth
     environment:
-      appSecret: ${self:custom.appSecret}
+      firebaseCertificate: ${self:custom.firebaseCertificate}
+      firebaseDbUrl: ${self:custom.${self:custom.stage}.firebaseDbUrl}
 
   graphql:
     handler: src/handler.handler
