@@ -20,7 +20,7 @@ plugins:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  appSecret: ${ssm:${self:custom.stage}-app-secret}
+  firebaseServiceAccount: ${ssm:${self:custom.stage}-firebase-service-account}
   dev:
     domain: dev-api.cloudkeeper.io
     corsOrigins:

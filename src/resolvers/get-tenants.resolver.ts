@@ -6,18 +6,14 @@ import * as xRay from 'aws-xray-sdk-core'
 const lambda = xRay.captureAWSClient(new Lambda({ apiVersion: '2015-03-31' }))
 
 export const getTenants = async (obj: any, args: any, context: any) => {
-  const id = context.event.requestContext.authorizer.id
-  const provider = context.event.requestContext.authorizer.provider
+  const userId = context.event.requestContext.authorizer.userId
 
   const getTenantsResult = await lambda.invoke({
     FunctionName: `cloudkeeper-metrics-service-${process.env.stage}-list-tenants`,
     Payload: JSON.stringify({
-      provider,
-      userId: id,
+      userId,
     }),
   }).promise()
 
-  const tenants = JSON.parse(getTenantsResult.Payload!.toString())
-
-  return tenants
+  return JSON.parse(getTenantsResult.Payload!.toString())
 }

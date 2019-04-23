@@ -7,14 +7,12 @@ import { checkError } from '../utils'
 const lambda = xRay.captureAWSClient(new Lambda({ apiVersion: '2015-03-31' }))
 
 export const deleteTenant = async (obj: any, args: any, context: any) => {
-  const id = context.event.requestContext.authorizer.id
-  const provider = context.event.requestContext.authorizer.provider
+  const userId = context.event.requestContext.authorizer.userId
 
   const deleteTenantResult = await lambda.invoke({
     FunctionName: `cloudkeeper-metrics-service-${process.env.stage}-delete-tenant`,
     Payload: JSON.stringify({
-      provider,
-      userId: id,
+      userId,
       tenantId: args.id,
     }),
   }).promise()

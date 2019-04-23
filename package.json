@@ -17,6 +17,7 @@
     "aws-sdk": "^2.429.0",
     "aws-xray-sdk-core": "^2.2.0",
     "bunyan": "^1.8.12",
+    "firebase-admin": "^7.3.0",
     "graphql": "^14.1.1",
     "graphql-type-json": "^0.2.1",
     "jsonwebtoken": "^8.5.0",

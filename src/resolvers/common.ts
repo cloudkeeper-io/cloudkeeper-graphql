@@ -7,14 +7,12 @@ const lambda = new Lambda({ apiVersion: '2015-03-31' })
 
 export const s3resolver = async (args: any, context: any, prefix: string) => {
   const tenantId = args.tenantId
-  const id = context.event.requestContext.authorizer.id
-  const provider = context.event.requestContext.authorizer.provider
+  const userId = context.event.requestContext.authorizer.userId
 
   const listTenantsResult = await lambda.invoke({
     FunctionName: `cloudkeeper-metrics-service-${process.env.stage}-list-tenants`,
     Payload: JSON.stringify({
-      provider,
-      userId: id,
+      userId,
     }),
   }).promise()
 

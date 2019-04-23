@@ -1,44 +1,71 @@
-import * as jwt from 'jsonwebtoken'
+import * as firebase from 'firebase-admin'
 
-const getPolicyDocument = (effect: any, resource: any) => {
-  return {
-    Version: '2012-10-17', // default version
-    Statement: [{
-      Action: 'execute-api:Invoke', // default action
-      Effect: effect,
-      Resource: resource,
-    }],
-  }
+const serviceAccount = process.env.serviceAccount!
+
+// every configuration is set in an env variable for security reasons https://firebase.google.com/docs/admin/setup
+const config = {
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
 }
 
-// extract and return the Bearer Token from the Lambda event parameters
-const getToken = (params: any) => {
-  console.log(params)
+const app = !firebase.apps.length ? firebase.initializeApp(config) : firebase.app()
 
-  const tokenString = params.authorizationToken
-  if (!tokenString) {
-    throw new Error("Expected 'event.authorizationToken\\' parameter to be set")
+/**
+ * Function used to build the authorization response in the Lambda way
+ * attacching the necessary info (policy, statement, principalId)
+ */
+const generatePolicy = (principalId: any, effect: string, resource: string) => {
+  const authResponse: any = {}
+  if (effect && resource) {
+    const policyDocument: any = {}
+    policyDocument.Version = '2012-10-17'
+    policyDocument.Statement = []
+    const statementOne: any = {}
+    statementOne.Action = 'execute-api:Invoke'
+    statementOne.Effect = effect
+    statementOne.Resource = resource
+    policyDocument.Statement[0] = statementOne
+    authResponse.policyDocument = policyDocument
   }
-
-  const match = tokenString.match(/^Bearer (.*)$/)
-  if (!match || match.length < 2) {
-    throw new Error(`Invalid Authorization token - '${tokenString}' does not match 'Bearer .*'`)
+  if (principalId.devMessage) {
+    authResponse.context = principalId
+  } else {
+    authResponse.principalId = principalId
+    authResponse.context = {
+      userId: principalId,
+    }
   }
-  return match[1]
+  return authResponse
 }
 
-export const authenticate = async (params: any) => {
-  const token = getToken(params)
+/**
+ * This lambda function is used as `authorizer`.
+ * It handles the authentication with firebase and its job is to authenticate each and every call.
+ * Set it in the 'authorize' field in serverless.yml
+ */
+export const authenticate = async (event: any, context: any) => {
+  context.callbackWaitsForEmptyEventLoop = false
 
-  const decoded: any = await jwt.verify(token, process.env.appSecret as string)
+  if (!event.authorizationToken) {
+    // No authorization token
+    throw new Error('Missing authorization token.')
+  }
 
-  return {
-    principalId: 'user',
-    policyDocument: getPolicyDocument('Allow', params.methodArn),
-    context: {
-      scope: decoded.scope,
-      id: decoded.id,
-      provider: decoded.provider,
-    },
+  const tokenParts = event.authorizationToken.split(' ')
+  const tokenValue = tokenParts[1]
+
+  if (!(tokenParts[0].toLowerCase() === 'bearer' && tokenValue)) {
+    throw new Error('Malformed authorization token.')
+  }
+
+  try {
+    // Verify the token and check if it's been revoked
+    const decodedToken = await app.auth().verifyIdToken(tokenValue, true)
+
+    // Sub is the firebase field containing the user/device id
+    return generatePolicy(decodedToken.sub, 'Allow', event.methodArn)
+  } catch (err) {
+    console.log('catch error. Invalid token', err)
+    throw new Error('There are some issues with your auth token.')
   }
 }

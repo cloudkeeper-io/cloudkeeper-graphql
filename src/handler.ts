@@ -11,9 +11,9 @@ const log = Logger.createLogger({
   name: 'report-metadata-api',
 } as Logger.LoggerOptions)
 
-export const auth = (event: any) => {
+export const auth = (event: any, context: any) => {
   console.log(event)
-  return authenticate(event)
+  return authenticate(event, context)
 }
 
 const server = new ApolloServer({
