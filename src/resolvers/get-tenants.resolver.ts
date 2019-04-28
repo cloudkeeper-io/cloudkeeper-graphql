@@ -1,11 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import * as Lambda from 'aws-sdk/clients/lambda'
-// @ts-ignore
-import * as xRay from 'aws-xray-sdk-core'
-
-const lambda = xRay.captureAWSClient(new Lambda({ apiVersion: '2015-03-31' }))
+import { getLambda } from '../aws.utils'
 
 export const getTenants = async (obj: any, args: any, context: any) => {
+  const lambda = await getLambda()
   const userId = context.event.requestContext.authorizer.userId
 
   const getTenantsResult = await lambda.invoke({

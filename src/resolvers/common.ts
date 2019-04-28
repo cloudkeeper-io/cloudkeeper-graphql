@@ -1,11 +1,10 @@
-import * as AWS from 'aws-sdk'
-import * as Lambda from 'aws-sdk/clients/lambda'
 import { includes, map } from 'lodash'
-
-const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
-const lambda = new Lambda({ apiVersion: '2015-03-31' })
+import { getLambda, getS3 } from '../aws.utils'
 
 export const s3resolver = async (args: any, context: any, prefix: string) => {
+  const lambda = await getLambda()
+  const s3 = await getS3()
+
   const tenantId = args.tenantId
   const userId = context.event.requestContext.authorizer.userId
 
