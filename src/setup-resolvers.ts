@@ -6,6 +6,9 @@ import {
   createTenant,
   deleteTenant,
   getAwsRegions,
+  getLambdasList,
+  getLambdaConfiguration,
+  getLambdaStats,
   setupTenant,
 } from './resolvers'
 
@@ -14,6 +17,9 @@ export default {
   Query: {
     lambdasData: getLambdasData,
     dynamoData: getDynamoData,
+    lambdasList: getLambdasList,
+    lambda: getLambdaConfiguration,
+    lambdaStats: getLambdaStats,
     tenants: getTenants,
     awsRegions: getAwsRegions,
   },
