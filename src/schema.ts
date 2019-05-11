@@ -1,6 +1,7 @@
 import {
   DashboardDynamoData,
   DashboardDynamoDataForPeriod,
+  DynamoTableListItem,
   MostExpensiveTableData,
   MostExpensiveTableDataPoint,
   MostThrottledTableData,
@@ -35,6 +36,7 @@ export default [
   'scalar JSON',
   DashboardDynamoData,
   DashboardDynamoDataForPeriod,
+  DynamoTableListItem,
   MostExpensiveTableData,
   MostExpensiveTableDataPoint,
   MostThrottledTableData,

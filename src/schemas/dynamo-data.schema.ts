@@ -102,3 +102,19 @@ type DashboardDynamoData {
   last30Days: DashboardDynamoDataForPeriod,
 }
 `
+
+export const DynamoTableListItem = `
+type DynamoTableListItem {
+  name: String
+  items: Int
+  sizeBytes: Int
+  region: String
+  billingMode: String
+  avgConsumedRead: Float
+  avgConsumedWrite: Float
+  avgProvisionedRead: Float
+  avgProvisionedWrite: Float
+  throttledReads: Int
+  throttledWrites: Int
+}
+`
