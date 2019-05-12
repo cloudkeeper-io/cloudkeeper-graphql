@@ -11,6 +11,8 @@ import {
   getLambdaStats,
   setupTenant,
   getDynamoTablesList,
+  getDynamoTable,
+  getDynamoTableStats,
 } from './resolvers'
 
 export default {
@@ -22,6 +24,8 @@ export default {
     lambda: getLambdaConfiguration,
     lambdaStats: getLambdaStats,
     dynamoTablesList: getDynamoTablesList,
+    dynamoTable: getDynamoTable,
+    dynamoTableStats: getDynamoTableStats,
     tenants: getTenants,
     awsRegions: getAwsRegions,
   },

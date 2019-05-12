@@ -118,3 +118,37 @@ type DynamoTableListItem {
   throttledWrites: Int
 }
 `
+
+export const DynamoTableDetails = `
+type DynamoTableDetails {
+  name: String
+  region: String
+  sizeBytes: Int
+  items: Int
+  billingMode: String
+}
+`
+
+export const DynamoTableStatsDataPoint = `
+type DynamoTableStatsDataPoint {
+  consumedRead: Int
+  consumedWrite: Int
+  provisionedRead: Int
+  provisionedWrite: Int
+  throttledReads: Int
+  throttledWrites: Int
+  dateTime: String
+}
+`
+
+export const DynamoTableStats = `
+type DynamoTableStats {
+  totalConsumedRead: Int
+  totalConsumedWrite: Int
+  totalProvisionedRead: Int
+  totalProvisionedWrite: Int
+  totalThrottledReads: Int
+  totalThrottledWrites: Int
+  dataPoints: [DynamoTableStatsDataPoint]
+}
+`
