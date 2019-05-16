@@ -13,6 +13,7 @@ import {
   getDynamoTablesList,
   getDynamoTable,
   getDynamoTableStats,
+  getCostsData,
 } from './resolvers'
 
 export default {
@@ -28,6 +29,7 @@ export default {
     dynamoTableStats: getDynamoTableStats,
     tenants: getTenants,
     awsRegions: getAwsRegions,
+    costsData: getCostsData,
   },
   Mutation: {
     createTenant,
