@@ -14,6 +14,7 @@ import {
   getDynamoTable,
   getDynamoTableStats,
   getCostsData,
+  getEventsData,
 } from './resolvers'
 
 export default {
@@ -27,6 +28,7 @@ export default {
     dynamoTablesList: getDynamoTablesList,
     dynamoTable: getDynamoTable,
     dynamoTableStats: getDynamoTableStats,
+    events: getEventsData,
     tenants: getTenants,
     awsRegions: getAwsRegions,
     costsData: getCostsData,
