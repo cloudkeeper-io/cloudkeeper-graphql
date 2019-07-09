@@ -2,7 +2,7 @@ export const ServiceCostItem = `
 type ServiceCostItem {
   serviceName: String
   date: String
-  blendedCost: Float
+  unblendedCost: Float
 }
 `
 
@@ -18,7 +18,7 @@ export const StackCostItem = `
 type StackCostItem {
   stackName: String
   date: String
-  blendedCost: Float
+  unblendedCost: Float
 }
 `
 
