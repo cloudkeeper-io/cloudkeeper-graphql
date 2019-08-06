@@ -1,11 +1,13 @@
-export const MostReadTableDataPoint = `
+import { gql } from 'apollo-server'
+
+export const MostReadTableDataPoint = gql`
 type MostReadTableDataPoint {
   consumedRead: Int
   provisionedRead: Int
   dateTime: String
 }
 `
-export const MostReadTableData = `
+export const MostReadTableData = gql`
 type MostReadTableData {
   name: String
   region: String
@@ -15,18 +17,18 @@ type MostReadTableData {
   items: Int
   consumedRead: Int
   provisionedRead: Int
-  dataPoints: [MostReadTableDataPoint]
+  dataPoints: [MostReadTableDataPoint!]
 }
 `
 
-export const MostWritesTableDataPoint = `
+export const MostWritesTableDataPoint = gql`
 type MostWritesTableDataPoint {
   consumedWrite: Int
   provisionedWrite: Int
   dateTime: String
 }
 `
-export const MostWritesTableData = `
+export const MostWritesTableData = gql`
 type MostWritesTableData {
   name: String
   region: String
@@ -36,11 +38,11 @@ type MostWritesTableData {
   items: Int
   consumedWrite: Int
   provisionedWrite: Int
-  dataPoints: [MostWritesTableDataPoint]
+  dataPoints: [MostWritesTableDataPoint!]
 }
 `
 
-export const MostThrottledTableDataPoint = `
+export const MostThrottledTableDataPoint = gql`
 type MostThrottledTableDataPoint {
   throttledRequests: Int
   throttledReads: Int
@@ -48,7 +50,7 @@ type MostThrottledTableDataPoint {
   dateTime: String
 }
 `
-export const MostThrottledTableData = `
+export const MostThrottledTableData = gql`
 type MostThrottledTableData {
   name: String
   region: String
@@ -58,11 +60,11 @@ type MostThrottledTableData {
   throttledRequests: Int
   throttledReads: Int
   throttledWrites: Int
-  dataPoints: [MostThrottledTableDataPoint]
+  dataPoints: [MostThrottledTableDataPoint!]
 }
 `
 
-export const MostExpensiveTableDataPoint = `
+export const MostExpensiveTableDataPoint = gql`
 type MostExpensiveTableDataPoint {
   totalPrice: Float
   readPrice: Float
@@ -71,7 +73,7 @@ type MostExpensiveTableDataPoint {
   dateTime: String
 }
 `
-export const MostExpensiveTableData = `
+export const MostExpensiveTableData = gql`
 type MostExpensiveTableData {
   name: String
   region: String
@@ -82,20 +84,20 @@ type MostExpensiveTableData {
   readPrice: Float
   writePrice: Float
   storagePrice: Float
-  dataPoints: [MostExpensiveTableDataPoint]
+  dataPoints: [MostExpensiveTableDataPoint!]
 }
 `
 
-export const DashboardDynamoDataForPeriod = `
+export const DashboardDynamoDataForPeriod = gql`
 type DashboardDynamoDataForPeriod {
   mostReadTables: [MostReadTableData]
   mostWritesTables: [MostWritesTableData]
-  mostThrottledTables: [MostThrottledTableData]
-  mostExpensiveTables: [MostExpensiveTableData]
+  mostThrottledTables: [MostThrottledTableData!]
+  mostExpensiveTables: [MostExpensiveTableData!]
 }
 `
 
-export const DashboardDynamoData = `
+export const DashboardDynamoData = gql`
 type DashboardDynamoData {
   processing: Boolean
   last24Hours: DashboardDynamoDataForPeriod,
@@ -103,7 +105,7 @@ type DashboardDynamoData {
 }
 `
 
-export const DynamoTableListItem = `
+export const DynamoTableListItem = gql`
 type DynamoTableListItem {
   name: String
   items: Int
@@ -112,14 +114,14 @@ type DynamoTableListItem {
   billingMode: String
   consumedRead: Int
   consumedWrite: Int
-  avgProvisionedRead: Int
-  avgProvisionedWrite: Int
+  avgProvisionedRead: Float
+  avgProvisionedWrite: Float
   throttledReads: Int
   throttledWrites: Int
 }
 `
 
-export const DynamoTableDetails = `
+export const DynamoTableDetails = gql`
 type DynamoTableDetails {
   name: String
   region: String
@@ -129,7 +131,7 @@ type DynamoTableDetails {
 }
 `
 
-export const DynamoTableStatsDataPoint = `
+export const DynamoTableStatsDataPoint = gql`
 type DynamoTableStatsDataPoint {
   consumedRead: Int
   consumedWrite: Int
@@ -141,7 +143,7 @@ type DynamoTableStatsDataPoint {
 }
 `
 
-export const DynamoTableStats = `
+export const DynamoTableStats = gql`
 type DynamoTableStats {
   totalConsumedRead: Int
   totalConsumedWrite: Int
@@ -149,6 +151,6 @@ type DynamoTableStats {
   totalProvisionedWrite: Int
   totalThrottledReads: Int
   totalThrottledWrites: Int
-  dataPoints: [DynamoTableStatsDataPoint]
+  dataPoints: [DynamoTableStatsDataPoint!]
 }
 `

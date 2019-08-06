@@ -13,6 +13,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "apollo-server": "^2.8.1",
     "apollo-server-lambda": "^2.4.2",
     "aws-sdk": "^2.429.0",
     "aws-xray-sdk-core": "^2.2.0",
