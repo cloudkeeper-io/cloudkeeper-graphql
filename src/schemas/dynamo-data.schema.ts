@@ -9,14 +9,14 @@ type MostReadTableDataPoint {
 `
 export const MostReadTableData = gql`
 type MostReadTableData {
-  name: String
-  region: String
-  averageConsumedRead: Float
-  billingMode: String
-  sizeBytes: Int
-  items: Int
-  consumedRead: Int
-  provisionedRead: Int
+  name: String!
+  region: String!
+  averageConsumedRead: Float!
+  billingMode: String!
+  sizeBytes: Int!
+  items: Int!
+  consumedRead: Int!
+  provisionedRead: Int!
   dataPoints: [MostReadTableDataPoint!]
 }
 `
@@ -75,15 +75,15 @@ type MostExpensiveTableDataPoint {
 `
 export const MostExpensiveTableData = gql`
 type MostExpensiveTableData {
-  name: String
-  region: String
-  billingMode: String
-  sizeBytes: Int
-  items: Int
-  totalPrice: Float
-  readPrice: Float
-  writePrice: Float
-  storagePrice: Float
+  name: String!
+  region: String!
+  billingMode: String!
+  sizeBytes: Int!
+  items: Int!
+  totalPrice: Float!
+  readPrice: Float!
+  writePrice: Float!
+  storagePrice: Float!
   dataPoints: [MostExpensiveTableDataPoint!]
 }
 `
