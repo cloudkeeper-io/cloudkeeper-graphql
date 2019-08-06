@@ -110,10 +110,10 @@ type DynamoTableListItem {
   sizeBytes: Int
   region: String
   billingMode: String
-  avgConsumedRead: Float
-  avgConsumedWrite: Float
-  avgProvisionedRead: Float
-  avgProvisionedWrite: Float
+  consumedRead: Int
+  consumedWrite: Int
+  provisionedRead: Int
+  provisionedWrite: Int
   throttledReads: Int
   throttledWrites: Int
 }
