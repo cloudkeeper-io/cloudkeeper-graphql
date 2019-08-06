@@ -112,8 +112,8 @@ type DynamoTableListItem {
   billingMode: String
   consumedRead: Int
   consumedWrite: Int
-  provisionedRead: Int
-  provisionedWrite: Int
+  avgProvisionedRead: Int
+  avgProvisionedWrite: Int
   throttledReads: Int
   throttledWrites: Int
 }
