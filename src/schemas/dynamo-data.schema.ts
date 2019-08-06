@@ -90,16 +90,16 @@ type MostExpensiveTableData {
 
 export const DashboardDynamoDataForPeriod = gql`
 type DashboardDynamoDataForPeriod {
-  mostReadTables: [MostReadTableData!]
-  mostWritesTables: [MostWritesTableData!]
-  mostThrottledTables: [MostThrottledTableData!]
-  mostExpensiveTables: [MostExpensiveTableData!]
+  mostReadTables: [MostReadTableData!]!
+  mostWritesTables: [MostWritesTableData!]!
+  mostThrottledTables: [MostThrottledTableData!]!
+  mostExpensiveTables: [MostExpensiveTableData!]!
 }
 `
 
 export const DashboardDynamoData = gql`
 type DashboardDynamoData {
-  processing: Boolean
+  processing: Boolean!
   last24Hours: DashboardDynamoDataForPeriod,
   last30Days: DashboardDynamoDataForPeriod,
 }
