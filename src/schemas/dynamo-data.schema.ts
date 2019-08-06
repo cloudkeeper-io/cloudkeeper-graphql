@@ -90,8 +90,8 @@ type MostExpensiveTableData {
 
 export const DashboardDynamoDataForPeriod = gql`
 type DashboardDynamoDataForPeriod {
-  mostReadTables: [MostReadTableData]
-  mostWritesTables: [MostWritesTableData]
+  mostReadTables: [MostReadTableData!]
+  mostWritesTables: [MostWritesTableData!]
   mostThrottledTables: [MostThrottledTableData!]
   mostExpensiveTables: [MostExpensiveTableData!]
 }

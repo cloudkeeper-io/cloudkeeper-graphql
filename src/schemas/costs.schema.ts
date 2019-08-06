@@ -10,7 +10,7 @@ export const CostsPerServiceDataPoint = `
 type CostsPerServiceDataPoint {
   date: String
   total: Float
-  serviceCosts: [ServiceCostItem]
+  serviceCosts: [ServiceCostItem!]
 }
 `
 
@@ -26,13 +26,13 @@ export const CostsPerStackDataPoint = `
 type CostsPerStackDataPoint {
   date: String
   total: Float
-  stackCosts: [StackCostItem]
+  stackCosts: [StackCostItem!]!
 }
 `
 
 export const CostsData = `
 type CostsData {
-  costsPerService: [CostsPerServiceDataPoint]
-  costsPerStack: [CostsPerStackDataPoint]
+  costsPerService: [CostsPerServiceDataPoint!]
+  costsPerStack: [CostsPerStackDataPoint!]
 }
 `
