@@ -118,6 +118,7 @@ type DynamoTableListItem {
   avgProvisionedWrite: Float
   throttledReads: Int
   throttledWrites: Int
+  cost: Float
 }
 `
 
