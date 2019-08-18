@@ -24,6 +24,7 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   firebaseCertificate: ${ssm:${self:custom.stage}-firebase-service-account}
+  tawkApiKey: dac26abcee64b9ae7d24315c04d098b6edb96a2d
   dev:
     firebaseDbUrl: https://dev-cloudkeeper.firebaseio.com
     domain: dev-api.cloudkeeper.io
@@ -54,6 +55,9 @@ functions:
     handler: src/handler.handler
     environment:
       bucket: ${self:custom.stage}-cloudkeeper-tenant-data
+      tawkApiKey: ${self:custom.tawkApiKey}
+      firebaseCertificate: ${self:custom.firebaseCertificate}
+      firebaseDbUrl: ${self:custom.${self:custom.stage}.firebaseDbUrl}
     events:
       - http:
           path: playground

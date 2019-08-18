@@ -15,6 +15,7 @@ import {
   getDynamoTableStats,
   getCostsData,
   getEventsData,
+  generateTawkUserHash,
 } from './resolvers'
 
 export default {
@@ -37,5 +38,6 @@ export default {
     createTenant,
     deleteTenant,
     setupTenant,
+    generateTawkUserHash,
   },
 }
