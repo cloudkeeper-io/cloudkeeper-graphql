@@ -1,9 +1,7 @@
-import * as AWS from 'aws-sdk'
+import AWS, { Lambda, S3 } from 'aws-sdk'
 import { DocumentClient } from 'aws-sdk/clients/dynamodb'
-// @ts-ignore
-import * as AWSXRay from 'aws-xray-sdk-core'
+import AWSXRay from 'aws-xray-sdk-core'
 import { memoize } from 'lodash'
-import { Lambda, S3 } from 'aws-sdk'
 
 const getAws = memoize(() => {
   if (AWSXRay.getNamespace().get('segment')) {

@@ -44,6 +44,7 @@ const generatePolicy = (principalId: any, effect: string, resource: string) => {
  * Set it in the 'authorize' field in serverless.yml
  */
 export const authenticate = async (event: any, context: any) => {
+  // eslint-disable-next-line no-param-reassign
   context.callbackWaitsForEmptyEventLoop = false
 
   if (!event.authorizationToken) {
@@ -65,12 +66,14 @@ export const authenticate = async (event: any, context: any) => {
     // Sub is the firebase field containing the user/device id
     return generatePolicy(decodedToken.sub, 'Allow', event.methodArn)
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.log('catch error. Invalid token', err)
     throw new Error('There are some issues with your auth token.')
   }
 }
 
 export const auth = (event: any, context: any) => {
+  // eslint-disable-next-line no-console
   console.log(event)
   return authenticate(event, context)
 }

@@ -12,6 +12,7 @@
     "outDir": "./dist",
     "sourceMap": true,
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noImplicitThis": true,
@@ -19,13 +20,11 @@
     "noImplicitReturns": true,
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
     "node_modules",
     "build",
-    "dist",
     "webpack"
   ],
   "types": [

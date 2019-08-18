@@ -5,7 +5,7 @@ import { checkTenantAccess } from './common'
 export const getLambdaConfiguration = async (obj: any, args: any, context: any) => {
   const lambda = await getLambda()
 
-  const userId = context.event.requestContext.authorizer.userId
+  const { userId } = context.event.requestContext.authorizer
   const { tenantId, name, region } = args
 
   await checkTenantAccess(userId, tenantId)

@@ -5,7 +5,7 @@ import { checkTenantAccess } from './common'
 export const getDynamoTablesList = async (obj: any, args: any, context: any) => {
   const lambda = await getLambda()
 
-  const userId = context.event.requestContext.authorizer.userId
+  const { userId } = context.event.requestContext.authorizer
   const { tenantId, startDate, endDate } = args
 
   await checkTenantAccess(userId, tenantId)
@@ -18,8 +18,6 @@ export const getDynamoTablesList = async (obj: any, args: any, context: any) => 
       endDate,
     }),
   }).promise()
-
-  console.log(getTablesResult.Payload!.toString())
 
   return JSON.parse(getTablesResult.Payload!.toString())
 }
