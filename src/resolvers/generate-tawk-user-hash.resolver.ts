@@ -14,8 +14,6 @@ const app = firebase.initializeApp(config)
 export const generateTawkUserHash = async (obj: any, args: any, context: any) => {
   const user = await app.auth().getUser(context.event.requestContext.authorizer.userId)
 
-  console.log(JSON.stringify(user))
-
   const email = user.email || user.providerData[0].email
 
   return crypto.createHmac('sha256', process.env.tawkApiKey!)
