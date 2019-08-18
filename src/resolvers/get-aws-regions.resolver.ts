@@ -3,6 +3,4 @@ import { map } from 'lodash'
 
 const ec2 = new EC2()
 
-export const getAwsRegions = async () => {
-  return map((await ec2.describeRegions().promise()).Regions, 'RegionName')
-}
+export const getAwsRegions = async () => map((await ec2.describeRegions().promise()).Regions, 'RegionName')

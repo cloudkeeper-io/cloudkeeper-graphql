@@ -17,6 +17,6 @@ export const generateTawkUserHash = async (obj: any, args: any, context: any) =>
   const email = user.email || user.providerData[0].email
 
   return crypto.createHmac('sha256', process.env.tawkApiKey!)
-      .update(new Buffer(email, 'utf-8'))
-      .digest('hex')
+    .update(Buffer.from(email, 'utf-8'))
+    .digest('hex')
 }

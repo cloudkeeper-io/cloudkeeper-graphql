@@ -1,5 +1,4 @@
-import { ApolloServer } from 'apollo-server-lambda'
-import { Handler } from 'aws-lambda'
+import { ApolloServer, IResolvers } from 'apollo-server-lambda'
 import * as Logger from 'bunyan'
 
 import schema from './schema'
@@ -11,7 +10,7 @@ const log = Logger.createLogger({
 } as Logger.LoggerOptions)
 
 const server = new ApolloServer({
-  resolvers,
+  resolvers: resolvers as IResolvers,
   typeDefs: schema as any,
   introspection: true,
   playground: true,
@@ -25,4 +24,4 @@ const server = new ApolloServer({
   },
 })
 
-export const handler: Handler = server.createHandler({ cors: { origin: '*', credentials: true } })
+export const handler = server.createHandler({ cors: { origin: '*', credentials: true } })
