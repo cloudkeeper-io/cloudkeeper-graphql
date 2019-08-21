@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { getLambda } from '../aws.utils'
-import { checkTenantAccess } from './common'
+import { getLambda } from '../../aws.utils'
+import { checkTenantAccess } from '../common'
 
 export const getLambdaConfiguration = async (obj: any, args: any, context: any) => {
   const lambda = await getLambda()

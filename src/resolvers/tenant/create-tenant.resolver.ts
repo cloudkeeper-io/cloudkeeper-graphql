@@ -1,5 +1,5 @@
 import * as Lambda from 'aws-sdk/clients/lambda'
-import { checkError } from '../utils'
+import { checkError } from '../../utils'
 
 const lambda = new Lambda({ apiVersion: '2015-03-31' })
 

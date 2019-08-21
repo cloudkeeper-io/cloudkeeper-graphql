@@ -9,6 +9,8 @@ import {
   getLambdasList,
   getLambdaConfiguration,
   getLambdaStats,
+  getMostExpensiveLambdas,
+  getMostExpensiveDynamoTables,
   setupTenant,
   getDynamoTablesList,
   getDynamoTable,
@@ -33,6 +35,8 @@ export default {
     tenants: getTenants,
     awsRegions: getAwsRegions,
     costsData: getCostsData,
+    mostExpensiveLambdas: getMostExpensiveLambdas,
+    mostExpensiveDynamoTables: getMostExpensiveDynamoTables,
   },
   Mutation: {
     createTenant,

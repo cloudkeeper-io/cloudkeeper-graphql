@@ -1,13 +1,12 @@
 import { gql } from 'apollo-server'
 
-export const MostReadTableDataPoint = gql`
+export const DynamoTypes = gql`
 type MostReadTableDataPoint {
   consumedRead: Int
   provisionedRead: Int
   dateTime: String
 }
-`
-export const MostReadTableData = gql`
+
 type MostReadTableData {
   name: String!
   region: String!
@@ -19,16 +18,13 @@ type MostReadTableData {
   provisionedRead: Int!
   dataPoints: [MostReadTableDataPoint!]
 }
-`
 
-export const MostWritesTableDataPoint = gql`
 type MostWritesTableDataPoint {
   consumedWrite: Int
   provisionedWrite: Int
   dateTime: String
 }
-`
-export const MostWritesTableData = gql`
+
 type MostWritesTableData {
   name: String
   region: String
@@ -40,17 +36,14 @@ type MostWritesTableData {
   provisionedWrite: Int
   dataPoints: [MostWritesTableDataPoint!]
 }
-`
 
-export const MostThrottledTableDataPoint = gql`
 type MostThrottledTableDataPoint {
   throttledRequests: Int
   throttledReads: Int
   throttledWrites: Int
   dateTime: String
 }
-`
-export const MostThrottledTableData = gql`
+
 type MostThrottledTableData {
   name: String
   region: String
@@ -62,9 +55,7 @@ type MostThrottledTableData {
   throttledWrites: Int
   dataPoints: [MostThrottledTableDataPoint!]
 }
-`
 
-export const MostExpensiveTableDataPoint = gql`
 type MostExpensiveTableDataPoint {
   totalPrice: Float
   readPrice: Float
@@ -72,8 +63,7 @@ type MostExpensiveTableDataPoint {
   storagePrice: Float
   dateTime: String
 }
-`
-export const MostExpensiveTableData = gql`
+
 type MostExpensiveTableData {
   name: String!
   region: String!
@@ -86,26 +76,20 @@ type MostExpensiveTableData {
   storagePrice: Float!
   dataPoints: [MostExpensiveTableDataPoint!]
 }
-`
 
-export const DashboardDynamoDataForPeriod = gql`
 type DashboardDynamoDataForPeriod {
   mostReadTables: [MostReadTableData!]!
   mostWritesTables: [MostWritesTableData!]!
   mostThrottledTables: [MostThrottledTableData!]!
   mostExpensiveTables: [MostExpensiveTableData!]!
 }
-`
 
-export const DashboardDynamoData = gql`
 type DashboardDynamoData {
   processing: Boolean!
   last24Hours: DashboardDynamoDataForPeriod,
   last30Days: DashboardDynamoDataForPeriod,
 }
-`
 
-export const DynamoTableListItem = gql`
 type DynamoTableListItem {
   name: String
   items: Int
@@ -120,9 +104,7 @@ type DynamoTableListItem {
   throttledWrites: Int
   cost: Float
 }
-`
 
-export const DynamoTableDetails = gql`
 type DynamoTableDetails {
   name: String
   region: String
@@ -130,9 +112,7 @@ type DynamoTableDetails {
   items: Int
   billingMode: String
 }
-`
 
-export const DynamoTableStatsDataPoint = gql`
 type DynamoTableStatsDataPoint {
   consumedRead: Int
   consumedWrite: Int
@@ -142,9 +122,7 @@ type DynamoTableStatsDataPoint {
   throttledWrites: Int
   dateTime: String
 }
-`
 
-export const DynamoTableStats = gql`
 type DynamoTableStats {
   totalConsumedRead: Int
   totalConsumedWrite: Int
@@ -153,5 +131,14 @@ type DynamoTableStats {
   totalThrottledReads: Int
   totalThrottledWrites: Int
   dataPoints: [DynamoTableStatsDataPoint!]
+}
+
+type MostExpensiveDynamoTable {
+    name: String
+    items: Int
+    sizeBytes: Int
+    region: String
+    billingMode: String
+    cost: Float
 }
 `
