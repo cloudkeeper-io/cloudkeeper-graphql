@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { getLambda } from '../../aws.utils'
 import { checkTenantAccess } from '../common'
 

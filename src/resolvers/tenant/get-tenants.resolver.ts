@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { getLambda } from '../../aws.utils'
 
 export const getTenants = async (obj: any, args: any, context: any) => {

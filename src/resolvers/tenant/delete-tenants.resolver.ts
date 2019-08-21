@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as Lambda from 'aws-sdk/clients/lambda'
 // @ts-ignore
 import * as xRay from 'aws-xray-sdk-core'
