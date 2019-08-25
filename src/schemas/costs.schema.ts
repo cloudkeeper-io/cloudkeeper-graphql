@@ -10,7 +10,7 @@ export const CostsPerServiceDataPoint = `
 type CostsPerServiceDataPoint {
   date: String
   total: Float
-  serviceCosts: [ServiceCostItem!]
+  serviceCosts: [ServiceCostItem!]!
 }
 `
 

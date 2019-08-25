@@ -134,11 +134,11 @@ type DynamoTableStats {
 }
 
 type MostExpensiveDynamoTable {
-    name: String
-    items: Int
-    sizeBytes: Int
-    region: String
-    billingMode: String
-    cost: Float
+    name: String!
+    items: Int!
+    sizeBytes: Int!
+    region: String!
+    billingMode: String!
+    cost: Float!
 }
 `

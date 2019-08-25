@@ -2,17 +2,17 @@ import { gql } from 'apollo-server'
 
 export const LambdaTypes = gql`
 type TotalsDataPoint {
-  dateTime: String
-  invocations: Int
-  errors: Int
-  cost: Float
+  dateTime: String!
+  invocations: Int!
+  errors: Int!
+  cost: Float!
 }
 
 type LambdaTotals {
-  invocations: Int
-  errors: Int
-  cost: Float
-  dataPoints: [TotalsDataPoint]
+  invocations: Int!
+  errors: Int!
+  cost: Float!
+  dataPoints: [TotalsDataPoint!]!
 }
 
 type LambdasListItem {
@@ -54,13 +54,13 @@ type LambdaConfiguration {
 }
     
 type MostExpensiveLambdasListItem {
-  tenantId: String
-  name: String
-  region: String
-  runtime: String
-  size: Int
-  codeSize: Int
-  timeout: Int
-  cost: Float
+  tenantId: String!
+  name: String!
+  region: String!
+  runtime: String!
+  size: Int!
+  codeSize: Int!
+  timeout: Int!
+  cost: Float!
 }
 `
