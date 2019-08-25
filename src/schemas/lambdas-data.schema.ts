@@ -8,21 +8,11 @@ type TotalsDataPoint {
   cost: Float
 }
 
-type Totals {
+type LambdaTotals {
   invocations: Int
   errors: Int
   cost: Float
   dataPoints: [TotalsDataPoint]
-}
-
-type DashboardLambdaDataForPeriod {
-  totals: Totals
-}
-
-type DashboardLambdasData {
-  processing: Boolean
-  last24Hours: DashboardLambdaDataForPeriod,
-  last30Days: DashboardLambdaDataForPeriod,
 }
 
 type LambdasListItem {

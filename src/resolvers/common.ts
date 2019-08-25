@@ -47,3 +47,22 @@ export const s3resolver = async (args: any, context: any, prefix: string) => {
     }
   }
 }
+
+export const lambdaResolver = async (args: any, context: any, functionName: string) => {
+  const lambda = await getLambda()
+
+  const { tenantId } = args
+  const { userId } = context.event.requestContext.authorizer
+
+  await checkTenantAccess(userId, tenantId)
+
+  const result = await lambda.invoke({
+    FunctionName: functionName,
+    Payload: JSON.stringify({
+      ...args,
+      userId,
+    }),
+  }).promise()
+
+  return result.Payload && JSON.parse(result.Payload.toString())
+}

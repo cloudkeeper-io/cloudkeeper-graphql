@@ -1,5 +1,5 @@
 export * from './get-lambda-configuration.resolver'
 export * from './get-lambda-stats.resolver'
 export * from './get-lambdas-list.resolver'
-export * from './lambdas-data.resolver'
 export * from './get-most-expensive-lambdas.resolver'
+export * from './lambda-totals.resolver'

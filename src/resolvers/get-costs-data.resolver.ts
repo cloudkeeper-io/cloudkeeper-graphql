@@ -1,3 +1,5 @@
-import { s3resolver } from './common'
+import { lambdaResolver } from './common'
 
-export const getCostsData = async (obj: any, args: any, context: any) => s3resolver(args, context, 'costs')
+export const getCostsData = async (obj: any, args: any, context: any) => {
+  return lambdaResolver(args, context, `cloudkeeper-metrics-service-${process.env.stage}-get-costs-summary`)
+}

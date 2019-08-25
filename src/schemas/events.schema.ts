@@ -1,4 +1,6 @@
-export const Event = `
+import { gql } from 'apollo-server'
+
+export const Event = gql`
 type Event {
   serviceName: String
   dimension: String
@@ -6,12 +8,5 @@ type Event {
   dateTime: String
   expectedValue: Float
   value: Float
-}
-`
-
-export const DashboardEventsData = `
-type DashboardEventsData {
-  processing: Boolean
-  events: [Event]
 }
 `
