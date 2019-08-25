@@ -53,6 +53,7 @@ functions:
 
   graphql:
     handler: src/handler.handler
+    timeout: 15
     environment:
       bucket: ${self:custom.stage}-cloudkeeper-tenant-data
       tawkApiKey: ${self:custom.tawkApiKey}
