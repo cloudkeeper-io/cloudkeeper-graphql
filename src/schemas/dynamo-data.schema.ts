@@ -12,8 +12,8 @@ type MostReadTableData {
   region: String!
   averageConsumedRead: Float!
   billingMode: String!
-  sizeBytes: Int!
-  items: Int!
+  sizeBytes: Float!
+  items: Float!
   consumedRead: Int!
   provisionedRead: Int!
   dataPoints: [MostReadTableDataPoint!]
@@ -30,8 +30,8 @@ type MostWritesTableData {
   region: String
   averageConsumedWrite: Float
   billingMode: String
-  sizeBytes: Int
-  items: Int
+  sizeBytes: Float
+  items: Float
   consumedWrite: Int
   provisionedWrite: Int
   dataPoints: [MostWritesTableDataPoint!]
@@ -48,8 +48,8 @@ type MostThrottledTableData {
   name: String
   region: String
   billingMode: String
-  sizeBytes: Int
-  items: Int
+  sizeBytes: Float
+  items: Float
   throttledRequests: Int
   throttledReads: Int
   throttledWrites: Int
@@ -68,8 +68,8 @@ type MostExpensiveTableData {
   name: String!
   region: String!
   billingMode: String!
-  sizeBytes: Int!
-  items: Int!
+  sizeBytes: Float!
+  items: Float!
   totalPrice: Float!
   readPrice: Float!
   writePrice: Float!
@@ -92,8 +92,8 @@ type DashboardDynamoData {
 
 type DynamoTableListItem {
   name: String
-  items: Int
-  sizeBytes: Int
+  items: Float
+  sizeBytes: Float
   region: String
   billingMode: String
   consumedRead: Int
@@ -108,8 +108,8 @@ type DynamoTableListItem {
 type DynamoTableDetails {
   name: String
   region: String
-  sizeBytes: Int
-  items: Int
+  sizeBytes: Float
+  items: Float
   billingMode: String
 }
 
@@ -135,8 +135,8 @@ type DynamoTableStats {
 
 type MostExpensiveDynamoTable {
     name: String!
-    items: Int!
-    sizeBytes: Int!
+    items: Float!
+    sizeBytes: Float!
     region: String!
     billingMode: String!
     cost: Float!
