@@ -1,0 +1,47 @@
+import * as GraphQLJSON from 'graphql-type-json'
+import {
+  getLambdaTotals,
+  getDynamoData,
+  getTenants,
+  createTenant,
+  deleteTenant,
+  getAwsRegions,
+  getLambdasList,
+  getLambdaConfiguration,
+  getLambdaStats,
+  getMostExpensiveLambdas,
+  getMostExpensiveDynamoTables,
+  setupTenant,
+  getDynamoTablesList,
+  getDynamoTable,
+  getDynamoTableStats,
+  getCostsData,
+  getEventsData,
+  generateTawkUserHash,
+} from './resolvers'
+
+export default {
+  JSON: GraphQLJSON,
+  Query: {
+    lambdaTotals: getLambdaTotals,
+    dynamoData: getDynamoData,
+    lambdasList: getLambdasList,
+    lambda: getLambdaConfiguration,
+    lambdaStats: getLambdaStats,
+    dynamoTablesList: getDynamoTablesList,
+    dynamoTable: getDynamoTable,
+    dynamoTableStats: getDynamoTableStats,
+    events: getEventsData,
+    tenants: getTenants,
+    awsRegions: getAwsRegions,
+    costsData: getCostsData,
+    mostExpensiveLambdas: getMostExpensiveLambdas,
+    mostExpensiveDynamoTables: getMostExpensiveDynamoTables,
+  },
+  Mutation: {
+    createTenant,
+    deleteTenant,
+    setupTenant,
+    generateTawkUserHash,
+  },
+}

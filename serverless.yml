@@ -1,0 +1,82 @@
+service: cloudkeeper-graphql
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  versionFunctions: false
+  memorySize: 1024
+  region: eu-central-1
+  tracing: true
+  environment:
+    stage: ${self:custom.stage}
+  iamRoleStatements:
+    ${file(roleStatements.yml)}
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-domain-manager
+  - serverless-plugin-tracing
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  firebaseCertificate: ${ssm:${self:custom.stage}-firebase-service-account}
+  tawkApiKey: ${ssm:cloudkeeper-tawk-api-key}
+  dev:
+    firebaseDbUrl: https://dev-cloudkeeper.firebaseio.com
+    domain: dev-api.cloudkeeper.io
+    corsOrigins:
+      - 'http://localhost:3000'
+      - 'https://dev.cloudkeeper.io'
+  prod:
+    firebaseDbUrl: https://prod-cloudkeeper.firebaseio.com
+    domain: api.cloudkeeper.io
+    corsOrigins:
+      - 'https://app.cloudkeeper.io'
+  customDomain:
+    domainName: ${self:custom.${self:custom.stage}.domain}
+    stage: ${self:custom.stage}
+    basePath: graphql
+    certificateName: '*.cloudkeeper.io'
+    createRoute53Record: true
+    endpointType: 'regional'
+
+functions:
+  auth:
+    handler: src/auth.auth
+    environment:
+      firebaseCertificate: ${self:custom.firebaseCertificate}
+      firebaseDbUrl: ${self:custom.${self:custom.stage}.firebaseDbUrl}
+
+  graphql:
+    handler: src/handler.handler
+    timeout: 15
+    environment:
+      bucket: ${self:custom.stage}-cloudkeeper-tenant-data
+      tawkApiKey: ${self:custom.tawkApiKey}
+      firebaseCertificate: ${self:custom.firebaseCertificate}
+      firebaseDbUrl: ${self:custom.${self:custom.stage}.firebaseDbUrl}
+    events:
+      - http:
+          path: playground
+          method: any
+          cors:
+            origins:
+              - '*'
+      - http:
+          path: ''
+          method: post
+          authorizer: auth
+          cors:
+            origins: ${self:custom.${self:custom.stage}.corsOrigins}
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+            allowCredentials: true
